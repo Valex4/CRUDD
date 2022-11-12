@@ -1,5 +1,6 @@
 var conexion=require("../config/conexion");
-let product=require("../model/product")
+let product=require("../model/product");
+let borrar= require("fs");
 module.exports={
 
     index:function(req,res){
@@ -38,10 +39,20 @@ module.exports={
     eliminar:function(req,res){
       console.log("resepcion de datos");
       console.log(req.params.id);
-      /*product.retornarDatosID(conexion,req.params.id,function(){
-        var nombreImagen="public/images"+(registros[0].imagen);
-        res.send(nombreImagen);
-      });*/
+      product.retornarDatosID(conexion,req.params.id,function(err,registros){
+        var nombreImagen="public/images/"+(registros[0].imagen);
+
+        
+
+        if(borrar.existsSync(nombreImagen)){
+          borrar.unlinkSync(nombreImagen);
+        }
+        product.borrar(conexion,req.params.id,function(err){
+
+          res.redirect('/products');
+        })
+
+      });
     }
     
 }

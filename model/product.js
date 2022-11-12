@@ -8,8 +8,11 @@ module.exports ={
     },
     mostrarCatalogo(conexion,funcion){
       conexion.query("SELECT * FROM productoss",funcion);
-    }
-    /*retornarDatosID:function(conexion,id,funcion){
+    },
+    retornarDatosID:function(conexion,id,funcion){
       conexion.query("SELECT * FROM productoss where id=?",[id],funcion);
-    }*/
+    },
+    borrar:function(conexion,id,funcion){
+      conexion.query("DELETE FROM productoss WHERE id=?",[id],funcion);
+    }
 }
