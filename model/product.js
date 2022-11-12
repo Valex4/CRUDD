@@ -14,5 +14,8 @@ module.exports ={
     },
     borrar:function(conexion,id,funcion){
       conexion.query("DELETE FROM productoss WHERE id=?",[id],funcion);
+    },
+    actualizar:function(conexion,datos,funcion){
+      conexion.query("UPDATE productoss SET nombre=?,categoria=?,precio=?,stock=?,descripcion=? WHERE id=?",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,datos.id],funcion);
     }
 }

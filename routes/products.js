@@ -29,5 +29,9 @@ router.get('/catalogo',productController.catalogo);
 router.get('/seguimiento',productController.seguimiento);
 router.get('/seguimientoproductos',productController.seguimientoproductos);
 router.post("/",cargar.single("imagen"),productController.guardar);
+router.get('/editar/:id',productController.editar);
 router.post("/eliminar/:id",productController.eliminar);
+
+router.post("/actualizar",cargar.single("imagen"),productController.actualizar);
+
 module.exports = router;

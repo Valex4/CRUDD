@@ -53,6 +53,23 @@ module.exports={
         })
 
       });
+    },
+    editar:function(req,res){
+      product.retornarDatosID(conexion,req.params.id,function(err,registros){
+        console.log(registros[0]);
+        res.render('products/editar', {product:registros[0]});
+      });
+      
+    },
+    actualizar:function(req,res){
+      console.log(req.body.nombre);
+
+      if(req.body.nombre){
+      product.actualizar(conexion,req.body,function (err) { });
+    }
+
+    res.redirect('/products');
+      //console.log(req.file.filename);
     }
     
 }
