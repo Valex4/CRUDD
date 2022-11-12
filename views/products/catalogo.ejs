@@ -1,0 +1,28 @@
+<%- include ../layouts/cabecera.ejs %> 
+<br>
+<br>
+<br>
+<h2>Catalogo Productos</h2>
+
+<br>
+  <% for( let producto = 0; producto < productos.length; producto++ ) { %>
+
+     <div class="car-group text-center p-5">
+      
+    <div class="card col-xl-N col1" style="width:15rem">
+      <img src="/images/<%=productos[producto].imagen %>" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title"><%=productos[producto].nombre %></h5>
+        <p class="card-text"><%=productos[producto].descripcion %></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <% } %>
+
+  <br>
+
+<%- include ../layouts/pie.ejs %>   

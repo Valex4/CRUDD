@@ -1,0 +1,28 @@
+{
+    "clientes": [
+      {
+        "nombre": "cerave",
+        "categoria": "jabon",
+        "precio": "4",
+        "stock": "3",
+        "descripcion": "jabon que limpia",
+        "id": 6
+      },
+      {
+        "nombre": "crema",
+        "categoria": "azul",
+        "precio": "78",
+        "stock": "50",
+        "descripcion": "cccccc",
+        "id": 7
+      },
+      {
+        "nombre": "yahir",
+        "categoria": "calzon",
+        "precio": "10000",
+        "stock": "1",
+        "descripcion": "pololo mio",
+        "id": 10
+      }
+    ]
+  }
