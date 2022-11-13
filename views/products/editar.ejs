@@ -3,10 +3,18 @@
 <br/>
 <br/>
 <br/>
+
+<div class="card">
+    <div class="card-header">
+        Formulario de captura
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Editar datos de productos</h5>
+        <p class="card-text">
 <form method="post" action="../actualizar/" enctype="multipart/form-data">
 
 
-<input type="text " name="id" value="<%= product.id %> ">
+<input type="hidden" name="id" value="<%= product.id %> ">
 
 
     <div class="form-group">
@@ -42,6 +50,13 @@
     </div>
     
     
-    <button class="btn btn-primary" type="submit">Guardar</button>
+    <button class="btn btn-success" type="submit">Actualizar</button>
+    <a class="btn btn-danger" href="/products">Cancelar</a>
 </form>
+
+
+        </p>
+    </div>
+</div>
+
 <%- include ../layouts/pie.ejs %>   

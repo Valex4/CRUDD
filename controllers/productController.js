@@ -64,12 +64,31 @@ module.exports={
     actualizar:function(req,res){
       console.log(req.body.nombre);
 
+      if(req.file){
+        if(req.file.filename){
+
+            product.retornarDatosID(conexion,req.body.id,function(err,registros){
+              var nombreImagen="public/images/"+(registros[0].imagen);
+              if(borrar.existsSync(nombreImagen)){
+                borrar.unlinkSync(nombreImagen);
+              }
+
+              product.actualizarArchivo(conexion,req.body,req.file,function(err){
+                
+              });
+            
+    
+            });
+        }
+
+      }
+
       if(req.body.nombre){
       product.actualizar(conexion,req.body,function (err) { });
     }
 
     res.redirect('/products');
-      //console.log(req.file.filename);
+      
     }
     
 }

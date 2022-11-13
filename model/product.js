@@ -17,5 +17,8 @@ module.exports ={
     },
     actualizar:function(conexion,datos,funcion){
       conexion.query("UPDATE productoss SET nombre=?,categoria=?,precio=?,stock=?,descripcion=? WHERE id=?",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,datos.id],funcion);
+    },
+    actualizarArchivo:function(conexion,datos,archivos,funcion){
+      conexion.query("UPDATE productoss SET imagen=? WHERE id=?",[archivos.filename,datos.id],funcion);
     }
 }
