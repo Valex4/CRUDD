@@ -20,5 +20,14 @@ module.exports ={
     },
     actualizarArchivo:function(conexion,datos,archivos,funcion){
       conexion.query("UPDATE productoss SET imagen=? WHERE id=?",[archivos.filename,datos.id],funcion);
+    },
+    categoriaJabon(conexion,funcion){
+      conexion.query("SELECT * FROM productoss where categoria= \"jabon\" ",funcion);
+    },
+    categoriaCrema(conexion,funcion){
+      conexion.query("SELECT * FROM productoss where categoria= \"crema\" ",funcion);
+    },
+    categoriaSerum(conexion,funcion){
+      conexion.query("SELECT * FROM productoss where categoria= \"serum\" ",funcion);
     }
 }

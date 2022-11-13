@@ -89,6 +89,21 @@ module.exports={
 
     res.redirect('/products');
       
-    }
+    },
+    jabones:function(req,res){
+      product.categoriaJabon(conexion,(err,datos)=>{
+        res.render("products/jabones",{products:datos });
+      });
+    },
+    cremas:function(req,res){
+      product.categoriaCrema(conexion,(err,datos)=>{
+       res.render("products/cremas",{products:datos });
+      });
+     },
+     serum:function(req,res){
+      product.categoriaSerum(conexion,(err,datos)=>{
+        res.render("products/serum",{products:datos });
+      });
+      }
     
 }

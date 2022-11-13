@@ -33,5 +33,7 @@ router.get('/editar/:id',productController.editar);
 router.post("/eliminar/:id",productController.eliminar);
 
 router.post("/actualizar",cargar.single("imagen"),productController.actualizar);
-
+router.get("/jabones",productController.jabones);
+router.get("/cremas",productController.cremas);
+router.get("/serum",productController.serum);
 module.exports = router;
