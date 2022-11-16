@@ -14,38 +14,60 @@ document.addEventListener('click', e => {
 const impresion1 = () =>{
     let expresionRegular =
       /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    let formularios = document.forms.formulario1;
+    let formularios = document.forms.registroComprador;
     let correo1 = formularios.elements.correo1;
-    let nombre = formularios.elements.usuario;
-    let contra1 = formularios.elements.contraseña1;
+    let nombre = formularios.elements.Usuario;
+    let contra1 = formularios.elements.contra1;
     let apPaterno = formularios.elements.ap_paterno;
     let apMaterno = formularios.elements.ap_materno;
+    let direccion = formularios.elements.direccion;
     if (
       !expresionRegular.test(correo1.value) ||
       nombre.value == "" ||
       contra1.value == "" ||
       apPaterno.value == "" ||
-      apMaterno.value == ""
+      apMaterno.value == "" ||
+      direccion.value == "" 
     ) {
-      alert("Complete el formulario correctamnete");
-    } else {
-        alert("Registrado");
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido',
+        text: 'Se ha registrado correctamente!'
+      })
+    } else {  
+      Swal.fire({
+        timer: 2500,
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error!',
+        footer: '<a href="">Why do I have this issue?</a>'  
+      });
     }
 }
 
 const impresion = () => {
     let expresionRegular =
       /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    let formularios = document.forms.formulario;
-    let correo = formularios.elements.correo;
-    let contra = formularios.elements.contraseña;
+    let formularios = document.forms.loginComprador;
+    let correo = formularios.elements.correo1;
+    let contra = formularios.elements.contra1;
 
     if (
       !expresionRegular.test(correo.value) ||
       contra.value == "" 
     ) {
-      alert("Complete el formulario correctamnete");
+      Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      );
     } else {
-        alert("Bienvenido")
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      });
     }
 };

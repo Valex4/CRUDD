@@ -72,6 +72,7 @@ body{
     font-size: 1.1em;
     font-weight: 500;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .login .inputBox input#btn1{
@@ -82,6 +83,7 @@ body{
     font-size: 1.1em;
     font-weight: 500;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .login .inputBox input#btn2{
@@ -92,6 +94,7 @@ body{
     font-size: 1.1em;
     font-weight: 500;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .login .group{
@@ -115,6 +118,7 @@ body{
 }
 
 @media only screen and (max-width: 420px){
+
     .Inicio{
         position: absolute;
         bottom: 750px;
@@ -175,3 +179,27 @@ body{
     }
     
 }
+
+@media only screen and (max-width: 750px) {
+    .container-form {
+        position: absolute;
+        top: 190px;
+    }
+    .welcome-back{
+        position: absolute;
+        top: 600px;
+    }
+    body{
+        position: relative;
+    
+    }
+    .sign-in.active {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        top: 200px;
+    }
+    .welcome-back{
+        top: -190px;
+    }
+}   

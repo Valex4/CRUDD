@@ -141,7 +141,7 @@ label{
     body{
         position: relative;
         height: 100vh;
-        background-image: url(footer.jpg);
+        background-image: url(/images/footer.jpg);
 
     }
     .sign-in.active {
@@ -154,3 +154,16 @@ label{
         top: -190px;
     }
 }    
+.submit1{
+    border: none;
+    border-radius: 35px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+      background-color: #4CAF50;
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }

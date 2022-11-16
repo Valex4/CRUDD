@@ -22,43 +22,29 @@
             <div class="message">
                 <h2>Bienvenido a Clean <span>Skin</span></h2>
                 <p>Si ya tienes una cuenta por favor inicia sesion aqui</p>
-                <button class="sign-up-btn">Iniciar Sesion</button>
+                <button class="sign-up-btn" onclick="location.href='./loginComprador'">Iniciar Sesion</button>
             </div>
         </div>
-        <form class="formulario" name="formulario1">
+        <form class="formulario" method="post" name="formulario1">
             <h2 class="create-account">Crear una cuenta</h2>
             
             <!-- <p class="cuenta-gratis">Crear una cuenta gratis</p> -->
-            <label for="">Usuario</label>
-            <input type="text" name="Usuario" id="usuario" >
+            <label for="">Nombre</label>
+            <input type="text" name="Usuario" id="usuario" required>
             <label for="">Email</label>
-            <input type="email" name="correo1">
+            <input type="email" name="correo1" required>
             <label for="">Contraseña</label>
-            <input type="password" name="contraseña1">
+            <input type="password" name="contra1" required>
             <label for="">Apellido Paterno</label>
-            <input type="text" name="ap_paterno">
+            <input type="text" name="ap_paterno" required>
             <label for="">Apellido Materno</label>
-            <input type="text" name="ap_materno">
-            <input type="button" value="Registrarse" onclick="impresion1();">
+            <input type="text" name="ap_materno" required>
+            <label for="">Direccion</label>
+            <input type="text" name="direccion" required>
+            <p class="error">   <%= typeof cadena != 'undefined' ?  cadena  : '  '  %> </p>
+            <br>
+            <button type="sumbit" class="submit1" value="Registrarse" onclick="impresion1()"> Registrarse</button>
         </form>
-    </div>
-    <div class="container-form sign-in">
-        <form class="formulario" name="formulario">
-            <h2 class="create-account">Iniciar Sesion</h2>
-            <!-- <p class="cuenta-gratis">¿Aun no tienes una cuenta?</p> -->
-            <label for="">Email</label>
-            <input type="email" name="correo">
-            <label for="">Contraseña</label>
-            <input type="password" name="contraseña">
-            <input type="button" value="Iniciar Sesion" onclick="impresion();">
-        </form>
-        <div class="welcome-back">
-            <div class="message">
-                <h2>Bienvenido de <span>nuevo</span></h2>
-                <p>Si aun no tienes una cuenta por favor registrese aqui</p>
-                <button class="sign-in-btn">Registrarse</button>
-            </div>
-        </div>
     </div>
     <script src="/javascripts/comprador.js"></script>
 </body>
