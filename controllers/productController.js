@@ -5,10 +5,21 @@ module.exports={
 
     index:function(req,res){
 
-      product.obtener(conexion,(err,datos)=>{
+      console.log("recibiendo el id en index");
+      console.log(req.params.id);
+    /* product.obtenerProductos(conexion,req.params.id,function(err, products){
+        console.log(products)
+        res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.params.id });
+      });*/
+
+     /*product.obtener(conexion,(err,datos)=>{
         console.log(datos)
-        res.render('products/index', { title: 'CleanSkin', products:datos });
-      });
+        res.render('products/index', { title: 'CleanSkin', products:datos, vendedor: 1 });
+      });*/
+      product.obtenerProductos2(conexion,req.params.id,function(err, products){
+        console.log(products)
+        res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.params.id });
+      })
 
     },
     crear:function(req,res){
@@ -19,12 +30,21 @@ module.exports={
       });
     },
     guardar:function(req,res){
+      console.log("guardar informacion:  funcion guardar");
       console.log(req.body);
+      console.log(req.body.id_vendedor);
       console.log(req.file.filename);
-
       product.insertar(conexion,req.body,req.file,(err,datos)=>{
-        res.redirect('/products');
+        //res.redirect('/products');
+
+        product.obtenerProductos2(conexion,req.body.id_vendedor,function(err, products){
+          console.log(products)
+          res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.body.id_vendedor });
+        })
         
+
+
+        //res.render('/products',{ products: req.body, vendedor: req.body.id_vendedor});
       });
     },
     catalogo:function(req,res){
@@ -44,6 +64,8 @@ module.exports={
       console.log("resepcion de datos");
       console.log(req.params.id);
       product.retornarDatosID(conexion,req.params.id,function(err,registros){
+        console.log("impresion de la variable registros en borrar");
+        console.log(registros[0].id_vendedor);
         var nombreImagen="public/images/"+(registros[0].imagen);
 
         
@@ -53,7 +75,11 @@ module.exports={
         }
         product.borrar(conexion,req.params.id,function(err){
 
-          res.redirect('/products');
+         product.obtenerProductos2(conexion,registros[0].id_vendedor,function(err, products){
+            console.log(products)
+            res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
+          })
+          //res.redirect('/products');
         })
 
       });

@@ -107,8 +107,9 @@ module.exports={
           user.obtenerProductos(conexion, prueba,(err, productos)=>{
             console.log("Recibiendo productos: ");
             console.log(productos);
-
-           res.render('./products/', { title: 'CleanSkin', products:productos });
+            console.log("id_vendedor de prueba");
+            console.log(prueba[0].id_vendedor);
+           res.render('./products/', { title: 'CleanSkin', products:productos, vendedor: prueba[0].id_vendedor });
           });
         }else{
           res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});

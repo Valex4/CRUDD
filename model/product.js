@@ -38,5 +38,8 @@ module.exports ={
     },
     obtenerProductos:function(conexion,datos,funcion){
       conexion.query("SELECT * FROM producto WHERE id_vendedor = ?",[datos[0].id_vendedor],funcion);
+    },
+    obtenerProductos2:function(conexion,id,funcion){
+      conexion.query("SELECT * FROM producto WHERE id_vendedor = ?",[id],funcion);
     }
 }

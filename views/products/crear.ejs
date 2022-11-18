@@ -52,7 +52,10 @@
     
     
     <button class="btn btn-success" type="submit">Guardar</button>
-    <a class="btn btn-danger" href="/products">Cancelar</a>
+</form>
+<br>
+<form class="form-inline" method="get" action="/products/<%= product.id_vendedor %>">
+    <button class="btn btn-danger" type="submit">Cancelar</button>
 </form>
         </p>
     </div>

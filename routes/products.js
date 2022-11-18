@@ -23,7 +23,7 @@ var cargar=multer({storage:rutaAlmacen});
 
 
 /* GET home page. */
-router.get('/',productController.index);
+router.get('/:id',productController.index);
 router.get('/crear/:id',productController.crear);
 router.get('/catalogo',productController.catalogo);
 router.get('/seguimiento',productController.seguimiento);
