@@ -1,11 +1,11 @@
 var mysql=require("mysql");
 var conexion=mysql.createConnection(
    {
-    host:"127.0.0.1",
-    port:3307,
-    user:"root",
-    password:"",
-    database:"pruebita"
+      host:"127.0.0.1",
+      port:3307,
+      user:"root",
+      password:"",
+      database:"Clean"
    }
 );
 conexion.connect(
