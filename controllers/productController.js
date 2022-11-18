@@ -92,6 +92,7 @@ module.exports={
       
     },
     actualizar:function(req,res){
+      console.log(req.body);
       console.log(req.body.nombre);
       console.log(req.body.id);
 
@@ -118,7 +119,23 @@ module.exports={
       product.actualizar(conexion,req.body,function (err) { });
     }
 
-    res.redirect('/products');
+    product.retornarDatosID(conexion,req.body.id,function(err,registros){
+      console.log("imprimiendo registros");
+      console.log(registros[0].id_vendedor);
+
+      product.obtenerProductos2(conexion,registros[0].id_vendedor,function(err, products){
+        console.log(products)
+        res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
+      })
+    }); 
+
+
+
+   /* product.obtenerProductos2(conexion,registros[0].id_vendedor,function(err, products){
+      console.log(products)
+      res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
+    })*/
+    //res.redirect('/products');
       
     },
     jabones:function(req,res){
