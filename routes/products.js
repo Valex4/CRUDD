@@ -24,7 +24,7 @@ var cargar=multer({storage:rutaAlmacen});
 
 /* GET home page. */
 router.get('/',productController.index);
-router.get('/crear',productController.crear);
+router.get('/crear/:id',productController.crear);
 router.get('/catalogo',productController.catalogo);
 router.get('/seguimiento',productController.seguimiento);
 router.get('/seguimientoproductos',productController.seguimientoproductos);

@@ -78,15 +78,16 @@ module.exports={
       console.log(datos);
       user.validarRegistroVendedor(conexion,datos,(err, userdata)=>{
         if(userdata.length > 0){
-          console.log("datos ingresados a BD: ");
-          user.insertarVendedor(conexion,datos,(err, datos) =>{
-            res.redirect('/products/catalogo');
-         
-      });
+          res.render('users/vendedor', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
           //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
           
         }else{
-          res.render('users/vendedor', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
+          console.log("datos ingresados a BD: ");
+          user.insertarVendedor(conexion,datos,(err, datos) =>{
+            res.redirect('/users/loginVendedor');
+         
+      });
+          
         }
       });
   },
@@ -99,7 +100,20 @@ module.exports={
       const prueba = JSON.parse(JSON.stringify(registro));
       console.log(prueba);
       if(registro.length > 0){ //esto es para evaluar el correo
-        (data.contraseña == prueba[0].contrasena) ? res.redirect('/products/catalogo') : res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});
+        if(data.contraseña == prueba[0].contrasena){
+          console.log("Recibiendo prueba: ")
+          console.log(prueba)
+
+          user.obtenerProductos(conexion, prueba,(err, productos)=>{
+            console.log("Recibiendo productos: ");
+            console.log(productos);
+
+           res.render('./products/', { title: 'CleanSkin', products:productos });
+          });
+        }else{
+          res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});
+        }
+        //(data.contraseña == prueba[0].contrasena) ? res.redirect('/products/catalogo') : res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});
       }else{
         console.log("Usuario no encontrado");
         res.render('users/loginVendedor', { cadena: '¡¡ Usuario no encontrado !!'});

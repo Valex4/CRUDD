@@ -4,7 +4,7 @@ module.exports ={
       conexion.query("SELECT * FROM producto",funcion);
     },
     insertar:function(conexion,datos,archivos,funcion){
-      conexion.query("INSERT INTO producto (nombre,categoria,precio,stock,descripcion,imagen) VALUES (?,?,?,?,?,?) ",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,archivos.filename],funcion);
+      conexion.query("INSERT INTO producto (nombre,categoria,precio,stock,descripcion,imagen,id_vendedor) VALUES (?,?,?,?,?,?,?) ",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,archivos.filename,datos.id_vendedor],funcion);
     },
     mostrarCatalogo(conexion,funcion){
       conexion.query("SELECT * FROM producto",funcion);
@@ -29,5 +29,14 @@ module.exports ={
     },
     categoriaSerum(conexion,funcion){
       conexion.query("SELECT * FROM producto where categoria= \"serum\" ",funcion);
+    },
+    retornarDatosID:function(conexion,id,funcion){
+      conexion.query("SELECT * FROM producto where id_producto=?",[id],funcion);
+    },
+    retornarVendedorID:function(conexion,id,funcion){
+      conexion.query("SELECT * FROM vendedor WHERE id_vendedor = ?",[id],funcion);
+    },
+    obtenerProductos:function(conexion,datos,funcion){
+      conexion.query("SELECT * FROM producto WHERE id_vendedor = ?",[datos[0].id_vendedor],funcion);
     }
 }

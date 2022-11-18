@@ -12,7 +12,11 @@ module.exports={
 
     },
     crear:function(req,res){
-     res.render('products/crear');
+      product.retornarVendedorID(conexion,req.params.id,function(err, vendedor){
+
+        res.render('products/crear', {product:vendedor[0]});
+        
+      });
     },
     guardar:function(req,res){
       console.log(req.body);

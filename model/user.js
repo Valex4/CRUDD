@@ -17,5 +17,11 @@ module.exports ={
     },
     validarRegistroVendedor:function(conexion,datos,funcion){
       conexion.query("SELECT * FROM vendedor WHERE correo = ?",[datos.correo],funcion);
+    },
+    retornarDatosID:function(conexion,id,funcion){
+      conexion.query("SELECT * FROM vendedor WHERE correo = ?",[datos.correo],funcion);
+    },
+    obtenerProductos:function(conexion,datos,funcion){
+      conexion.query("SELECT * FROM producto WHERE id_vendedor = ?",[datos[0].id_vendedor],funcion);
     }
 }

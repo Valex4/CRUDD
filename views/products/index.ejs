@@ -5,7 +5,9 @@
         <br/>
         <h2>Gestion de Productos</h2>
         <br/>
-        <a href="/products/crear" class="btn btn-primary" type="button">Crear un nuevo producto</a>
+        <form class="form-inline" method="get" action="/products/crear/<%=products[0].id_vendedor %>">
+            <button class="btn btn-primary" type="submit">Crear un nuevo producto</button>
+        </form>
         <a href="/products/catalogo" class="btn btn-success" type="button">Catalogo</a>
         <a href="/products/seguimiento" class="btn btn-success" type="button">Seguimiento Envios</a>
         <br/>
