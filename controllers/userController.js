@@ -42,15 +42,18 @@ module.exports={
       console.log("contraseña registro: ");
       console.log(datos.contra1);
       user.validarRegistroComprador(conexion,datos,(err, userdata)=>{
+        console.log(userdata.length);
         if(userdata.length > 0){
-          //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
           res.render('users/comprador', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
+          //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
+          
         }else{
           console.log("datos ingresados a BD: ");
           user.insertarComprador(conexion,datos,(err, datos) =>{
             res.redirect('/products/catalogo');
          
       });
+          
         }
       });
     },validarComprador:function(req,res){
@@ -61,11 +64,6 @@ module.exports={
 
         const prueba = JSON.parse(JSON.stringify(registro));
         console.log(registro.length)
-        /*console.log("impresion de prueba: ")
-        console.log(prueba);
-        console.log("prueba: "+prueba[0].contrasena);
-        console.log("data: "+data.contra1);*/
-
         if(registro.length > 0){ //esto es para evaluar el correo
           (data.contra1 == prueba[0].contrasena) ? res.redirect('/products/catalogo') : res.render('users/loginComprador', { cadena: '¡¡ Contraseña incorrecta !!'});
         }else{
@@ -80,14 +78,15 @@ module.exports={
       console.log(datos);
       user.validarRegistroVendedor(conexion,datos,(err, userdata)=>{
         if(userdata.length > 0){
-          //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
-          res.render('users/vendedor', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
-        }else{
           console.log("datos ingresados a BD: ");
           user.insertarVendedor(conexion,datos,(err, datos) =>{
             res.redirect('/products/catalogo');
          
       });
+          //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
+          
+        }else{
+          res.render('users/vendedor', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
         }
       });
   },

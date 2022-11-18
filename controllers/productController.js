@@ -63,6 +63,7 @@ module.exports={
     },
     actualizar:function(req,res){
       console.log(req.body.nombre);
+      console.log(req.body.id);
 
       if(req.file){
         if(req.file.filename){
